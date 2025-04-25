@@ -1,0 +1,330 @@
+<div
+  style="
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f7f9fc;
+    padding: 20px;
+    min-height: 100vh;
+  "
+>
+  <!-- Header -->
+  <div style="display: flex; align-items: center; margin-bottom: 30px">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="#1e88e5"
+      style="margin-right: 10px; cursor: pointer"
+    >
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+    </svg>
+    <h1 style="font-size: 24px; font-weight: 600; color: #333">
+      Encrypt / Decrypt
+    </h1>
+  </div>
+
+  <!-- Config Section -->
+  <div
+    style="
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    "
+  >
+    <h2
+      style="
+        font-size: 18px;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 15px;
+      "
+    >
+      Config
+    </h2>
+
+    <div style="display: flex; align-items: center; margin-bottom: 15px">
+      <label style="width: 80px; font-weight: 500; color: #333">Key:</label>
+      <div style="display: flex; align-items: center; margin-right: 20px">
+        <input
+          type="radio"
+          id="key-default"
+          name="key-config"
+          checked
+          style="margin-right: 5px"
+        />
+        <label for="key-default" style="color: #555">Default</label>
+      </div>
+      <div style="display: flex; align-items: center">
+        <input
+          type="radio"
+          id="key-custom"
+          name="key-config"
+          style="margin-right: 5px"
+        />
+        <label for="key-custom" style="color: #555">Custom</label>
+      </div>
+      <input
+        type="text"
+        placeholder="Enter Key"
+        style="
+          flex-grow: 1;
+          margin-left: 15px;
+          padding: 8px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #333;
+        "
+        disabled
+      />
+    </div>
+
+    <div style="display: flex; align-items: center">
+      <label style="width: 80px; font-weight: 500; color: #333">IV:</label>
+      <div style="display: flex; align-items: center; margin-right: 20px">
+        <input
+          type="radio"
+          id="iv-default"
+          name="iv-config"
+          checked
+          style="margin-right: 5px"
+        />
+        <label for="iv-default" style="color: #555">Default</label>
+      </div>
+      <div style="display: flex; align-items: center">
+        <input
+          type="radio"
+          id="iv-custom"
+          name="iv-config"
+          style="margin-right: 5px"
+        />
+        <label for="iv-custom" style="color: #555">Custom</label>
+      </div>
+      <input
+        type="text"
+        placeholder="Enter IV"
+        style="
+          flex-grow: 1;
+          margin-left: 15px;
+          padding: 8px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #333;
+        "
+        disabled
+      />
+    </div>
+  </div>
+
+  <!-- Encrypt/Decrypt Panels -->
+  <div style="display: flex; gap: 20px">
+    <!-- Encrypt Panel -->
+    <div
+      style="
+        flex: 1;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+        "
+      >
+        <h2 style="font-size: 18px; font-weight: 600; color: #00a877">
+          Encrypt Data
+        </h2>
+        <div style="display: flex; gap: 10px">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M19 2h-4.18C14.4 0.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm7 18H5V4h2v3h10V4h2v16z"
+            />
+          </svg>
+          <!-- Paste Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
+          </svg>
+          <!-- Copy Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            />
+          </svg>
+          <!-- Clear Icon -->
+        </div>
+      </div>
+      <textarea
+        placeholder="Enter data to encrypt..."
+        style="
+          flex-grow: 1;
+          width: 100%;
+          height: 150px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #333;
+          resize: vertical;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        "
+      ></textarea>
+      <button
+        style="
+          background-color: #00a877;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          align-self: flex-end;
+          transition: background-color 0.2s ease;
+        "
+      >
+        Encrypt
+      </button>
+    </div>
+
+    <!-- Decrypt Panel -->
+    <div
+      style="
+        flex: 1;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+        "
+      >
+        <h2 style="font-size: 18px; font-weight: 600; color: #e57373">
+          Decrypt Data
+        </h2>
+        <div style="display: flex; gap: 10px">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M19 2h-4.18C14.4 0.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm7 18H5V4h2v3h10V4h2v16z"
+            />
+          </svg>
+          <!-- Paste Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
+          </svg>
+          <!-- Copy Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+            fill="#777"
+            style="cursor: pointer"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            />
+          </svg>
+          <!-- Clear Icon -->
+        </div>
+      </div>
+      <textarea
+        placeholder="Enter data to decrypt..."
+        style="
+          flex-grow: 1;
+          width: 100%;
+          height: 150px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #333;
+          resize: vertical;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        "
+      ></textarea>
+      <button
+        style="
+          background-color: #e57373;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          align-self: flex-end;
+          transition: background-color 0.2s ease;
+        "
+      >
+        Decrypt
+      </button>
+    </div>
+  </div>
+
+  <!-- The bottom bar showing "1" and copy icon is removed for simplicity assuming output goes into textareas -->
+</div>

@@ -1,0 +1,46 @@
+<p-drawer
+  header="Drawer"
+  #drawerRef
+  [visible]="true"
+  [modal]="false"
+  styleClass="w-[16rem]! px-4! bg-[#0f172a]! bg-blend-exclusion! bg-cover! bg-no-repeat!"
+>
+  <ng-template #headless>
+    <div
+      class="flex flex-row gap-4 items-center pt-6 p-2 px-2 cursor-pointer"
+      (click)="toHome()"
+    >
+      <div class="bg-primary p-1 rounded">
+        <p-image src="/images/abbot.png" width="30" />
+      </div>
+      <div class="text-2xl font-bold"><span class="">API</span> Test</div>
+    </div>
+    <p-divider />
+    <div class="overflow-y-auto text-white">
+      <p-menu
+        [model]="items"
+        styleClass="bg-transparent! border-none! text-primary-500!"
+      >
+        <ng-template #submenuheader let-item>
+          <span class="text-white font-bold">{{ item.label }}</span>
+        </ng-template>
+        <ng-template #item let-item>
+          <a
+            [routerLink]="[item.route]"
+            pRipple
+            [class]="currentMenu === item.id ? `flex items-center p-menu-item-link bg-[#062732] rounded-sm` : `flex items-center p-menu-item-link hover:bg-[#062732] rounded-sm`"
+            (mouseenter)="mouseHovering(item.id)"
+            (mouseleave)="mouseLeaving()"
+          >
+            <p-image [src]="item.image" height="30" width="30" />
+            <span
+              [ngClass]="currentMenu === item.id ? 'ml-2 text-primary-100' : `ml-2 ${isHovering === item.id ? 'text-primary-100' : 'text-primary-100'} `"
+            >
+              {{ item.label }}
+            </span>
+          </a>
+        </ng-template>
+      </p-menu>
+    </div>
+  </ng-template>
+</p-drawer>

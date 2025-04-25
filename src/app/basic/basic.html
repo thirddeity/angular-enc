@@ -1,0 +1,195 @@
+<form [formGroup]="form">
+  <p-card styleClass="mb-6!">
+    <div class="flex flex-row items-center gap-3">
+      <back-button (clicked)="onBack()" />
+      <div class="text-xl font-bold">Encype/Decype</div>
+    </div>
+    <p-divider />
+    <div class="font-bold mb-2">Config</div>
+    <div class="flex flex-wrap flex-row gap-4 items-center mb-2">
+      <div class="flex-none w-14">Key :</div>
+      <div class="flex-none">
+        <p-radiobutton
+          name="keyValue"
+          value="0"
+          formControlName="keyValue"
+          inputId="keyValue"
+          size="large"
+        />
+        <span for="keyValue" class="ml-2">Default</span>
+      </div>
+      <div class="flex-none">
+        <p-radiobutton
+          name="keyValue"
+          value="1"
+          formControlName="keyValue"
+          inputId="keyValue"
+          size="large"
+        />
+        <span for="keyValue" class="ml-2">Custom</span>
+      </div>
+      <div class="flex-auto">
+        <p-floatlabel variant="on">
+          <input
+            [fluid]="true"
+            id="keyInput"
+            type="text"
+            pInputText
+            formControlName="keyInput"
+            pSize="small"
+          />
+          <label for="keyInput">Key</label>
+        </p-floatlabel>
+        <div class="pl-2" *ngIf="showInvalidText('keyInput')">
+          <p-message
+            *ngIf="form.controls['keyInput'].value.length && form.controls['keyInput'].value.length !== 16"
+            severity="error"
+            variant="simple"
+            size="small"
+          >
+            ข้อมูลนี้จะต้องมีค่า 16 หลักเท่านั้น
+          </p-message>
+          <p-message
+            *ngIf="!form.controls['keyInput'].value.length"
+            severity="error"
+            variant="simple"
+            size="small"
+          >
+            กรุณาระบุค่า Key
+          </p-message>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap flex-row gap-4 items-center">
+      <div class="flex-none w-14">IV :</div>
+      <div class="flex-none">
+        <p-radiobutton
+          name="ivValue"
+          value="0"
+          formControlName="ivValue"
+          inputId="ivValue"
+          size="large"
+        />
+        <span for="ivValue" class="ml-2">Default</span>
+      </div>
+      <div class="flex-none">
+        <p-radiobutton
+          name="ivValue"
+          value="1"
+          formControlName="ivValue"
+          inputId="ivValue"
+          size="large"
+        />
+        <span for="ivValue" class="ml-2">Custom</span>
+      </div>
+      <div class="flex-auto">
+        <p-floatlabel variant="on">
+          <input
+            [fluid]="true"
+            id="ivInput"
+            type="text"
+            pInputText
+            formControlName="ivInput"
+            pSize="small"
+          />
+          <label for="ivInput">IV</label>
+        </p-floatlabel>
+        <div class="pl-2" *ngIf="showInvalidText('ivInput')">
+          <p-message severity="error" variant="simple" size="small">
+            กรุณาระบุค่า IV
+          </p-message>
+        </div>
+      </div>
+    </div>
+  </p-card>
+
+  <p-card>
+    <div class="flex flex-row items-center gap-4">
+      <div class="flex-1">
+        <div class="flex flex-row items-center justify-between">
+          <div class="font-bold text-primary mb-2">Encype</div>
+          <div>
+            <p-button
+              icon="pi pi-clipboard"
+              variant="text"
+              [rounded]="true"
+              (click)="onPaste('encValue')"
+            />
+            <p-button
+              icon="pi pi-copy"
+              variant="text"
+              severity="success"
+              [rounded]="true"
+              (click)="onCopy('encValue')"
+            />
+            <p-button
+              icon="pi pi-times"
+              variant="text"
+              severity="danger"
+              [rounded]="true"
+              (click)="onClear('encValue')"
+            />
+          </div>
+        </div>
+        <p-floatlabel variant="on" class="mb-2">
+          <textarea
+            pTextarea
+            id="encValue"
+            formControlName="encValue"
+            rows="8"
+            class="w-full"
+          ></textarea>
+          <label for="encValue">Encype</label>
+        </p-floatlabel>
+        <div class="flex justify-end">
+          <p-button size="small" severity="success" (onClick)="onEncrype()">
+            Encype
+          </p-button>
+        </div>
+      </div>
+      <div class="flex-1">
+        <div class="flex flex-row items-center justify-between">
+          <div class="font-bold text-primary mb-2">Decype</div>
+          <div>
+            <p-button
+              icon="pi pi-clipboard"
+              variant="text"
+              [rounded]="true"
+              (click)="onPaste('decValue')"
+            />
+            <p-button
+              icon="pi pi-copy"
+              variant="text"
+              severity="success"
+              [rounded]="true"
+              (click)="onCopy('decValue')"
+            />
+            <p-button
+              icon="pi pi-times"
+              variant="text"
+              severity="danger"
+              [rounded]="true"
+              (click)="onClear('decValue')"
+            />
+          </div>
+        </div>
+        <p-floatlabel variant="on" class="mb-2">
+          <textarea
+            pTextarea
+            id="decValue"
+            formControlName="decValue"
+            rows="8"
+            class="w-full"
+          ></textarea>
+          <label for="decValue">Decype</label>
+        </p-floatlabel>
+        <div class="flex justify-end">
+          <p-button size="small" severity="danger" styleClass="text-white!">
+            Decype
+          </p-button>
+        </div>
+      </div>
+    </div>
+  </p-card>
+  <p-toast />
+</form>
